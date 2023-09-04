@@ -1,0 +1,22 @@
+version: "3.5"
+
+services:
+  my-ubuntu:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: my-ubuntu
+    environment:
+      HOME: /home/user
+    ports:
+      - "2023:2023"
+      - "2024:2024"
+    networks:
+      - our_net
+    volumes:
+      - /Users/jay/Downloads/docker:/home/share/
+    tty: true
+
+networks:
+  our_net:
+    driver: bridge
